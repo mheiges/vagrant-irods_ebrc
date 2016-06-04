@@ -24,7 +24,7 @@ IRODS_HOSTS = {
 }
 
 [
-  { :name => "vagrant-librarian-puppet", :version => ">= 0.9.2" },
+  { :name => 'vagrant-librarian-puppet', :version => '>= 0.9.2' },
 ].each do |plugin|
   if not Vagrant.has_plugin?(plugin[:name], plugin[:version])
     raise "#{plugin[:name]} #{plugin[:version]} is required. Please run `vagrant plugin install #{plugin[:name]}`"
@@ -53,6 +53,14 @@ Vagrant.configure(2) do |config|
         '/etc/puppetlabs/code/',
         owner: 'root', group: 'root' 
 
+      vm_config.librarian_puppet.puppetfile_dir = 'puppet'
+
+      if ( Vagrant.has_plugin?('landrush') and vm_config.landrush.enabled)
+        # The Puppet manifests includes a firewalld reload that clobbers
+        # the iptables dns nat rule added by Landrush. So save iptables
+        # for restoration after Puppet provisioning.
+        vm_config.vm.provision :shell, inline: '/sbin/iptables-save -t nat > /root/landrush.iptables'
+      end
       vm_config.vm.provision :puppet do |puppet|
         puppet.environment = 'production'
         puppet.environment_path = 'puppet/environments'
@@ -61,6 +69,9 @@ Vagrant.configure(2) do |config|
         puppet.manifest_file = cfg[:puppet_manifest]
         puppet.hiera_config_path = 'puppet/hiera.yaml'
         #puppet.options = ['--debug --trace --verbose']
+      end
+      if ( Vagrant.has_plugin?('landrush') and vm_config.landrush.enabled)
+        vm_config.vm.provision :shell, inline: '/sbin/iptables-restore < /root/landrush.iptables'
       end
 
     end
