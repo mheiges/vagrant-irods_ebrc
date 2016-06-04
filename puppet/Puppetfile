@@ -1,0 +1,15 @@
+forge "http://forge.puppetlabs.com"
+
+mod 'stahnma/epel'
+mod 'puppetlabs/stdlib'
+mod 'puppetlabs/postgresql'
+mod 'crayfishx/firewalld'
+
+mod 'ebrc_yum_repo',
+  :git => 'https://github.com/EuPathDB/puppet-ebrc_yum_repo.git'
+
+mod 'irods',
+  :git => 'https://github.com/EuPathDB/puppet-irods.git'
+
+mod 'profiles',
+  :path => "./src/profiles"

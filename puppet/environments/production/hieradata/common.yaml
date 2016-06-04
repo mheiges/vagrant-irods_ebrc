@@ -1,0 +1,11 @@
+---
+
+
+irods::icat::db_vendor: postgres
+irods::globals::icat_server: ies.irods.vm
+irods::icat::db_srv_host: localhost
+irods::icat::db_password: oldpassword
+irods::icat::do_setup: true
+irods::resource::do_setup: true
+
+postgresql::server::postgres_password: passWORD

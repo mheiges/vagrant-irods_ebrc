@@ -1,0 +1,47 @@
+FORGE
+  remote: https://forgeapi.puppetlabs.com
+  specs:
+    crayfishx-firewalld (2.2.0)
+      puppetlabs-stdlib (< 5.0.0, >= 4.2.0)
+    puppetlabs-apt (2.2.2)
+      puppetlabs-stdlib (< 5.0.0, >= 4.5.0)
+    puppetlabs-concat (2.1.0)
+      puppetlabs-stdlib (< 5.0.0, >= 3.2.0)
+    puppetlabs-postgresql (4.7.1)
+      puppetlabs-apt (< 3.0.0, >= 1.8.0)
+      puppetlabs-concat (< 3.0.0, >= 1.1.0)
+      puppetlabs-stdlib (~> 4.0)
+    puppetlabs-stdlib (4.12.0)
+    stahnma-epel (1.2.2)
+      puppetlabs-stdlib (>= 3.0.0)
+
+GIT
+  remote: https://github.com/EuPathDB/puppet-ebrc_yum_repo.git
+  ref: master
+  sha: 2e75a0de6b7e4da022a1a4de7ee5306b5fcc0a4d
+  specs:
+    ebrc_yum_repo (0.1.0)
+      puppetlabs-stdlib (>= 1.0.0)
+
+GIT
+  remote: https://github.com/EuPathDB/puppet-irods.git
+  ref: master
+  sha: 0977491b8ba53ce64e0b8d01d3ea9fc6d7a9e5a2
+  specs:
+    irods (0.1.0)
+      puppetlabs-stdlib (>= 1.0.0)
+
+PATH
+  remote: ./src/profiles
+  specs:
+    profiles (0.0.1)
+
+DEPENDENCIES
+  crayfishx-firewalld (>= 0)
+  ebrc_yum_repo (>= 0)
+  irods (>= 0)
+  profiles (>= 0)
+  puppetlabs-postgresql (>= 0)
+  puppetlabs-stdlib (>= 0)
+  stahnma-epel (>= 0)
+

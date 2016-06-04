@@ -1,4 +1,6 @@
 .DS_Store
 scratch/*
 .vagrant
-puppet/*
+puppet/modules
+puppet/.tmp
+puppet/.librarian

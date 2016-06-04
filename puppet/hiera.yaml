@@ -1,0 +1,12 @@
+---
+:backends:
+    - yaml
+    
+:yaml:
+    :datadir: "%{settings::codedir}/environments/%{::environment}/hieradata"
+
+:hierarchy:
+    - "nodes/%{::fqdn}"
+    - "%{::domain}"
+    - common
+
