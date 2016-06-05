@@ -4,6 +4,9 @@
   "author": "ebrc",
   "summary": "Local profiles to install iRODS client, iCAT server, resource server",
   "license": "Apache-2.0",
+  "source": "",
+  "project_page": null,
+  "issues_url": null,
   "dependencies": [
     {"name":"ebrc/irods"},
     {"name":"puppetlabs/postgresql"},
