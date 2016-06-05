@@ -1,0 +1,14 @@
+{
+  "name": "local/profiles",
+  "version": "0.0.0",
+  "author": "ebrc",
+  "summary": "Local profiles to install iRODS client, iCAT server, resource server",
+  "license": "Apache-2.0",
+  "dependencies": [
+    {"name":"ebrc/irods"},
+    {"name":"puppetlabs/postgresql"},
+    {"name":"crayfishx/firewalld"},
+    {"name":"ebrc/ebrc_yum_repo"}
+  ]
+}
+
