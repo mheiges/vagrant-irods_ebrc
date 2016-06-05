@@ -8,9 +8,9 @@ class profiles::irods_icat_postgres {
   Class['profiles::irods_icat']  
 
   if $irods::icat::do_setup == true {
-    include irods::icat_setup
+    include irods::icat::setup
     Postgresql::Server::Db[$irods::icat::db_name] ~>
-    Class['irods::icat_setup']
+    Class['irods::icat::setup']
   }
 
 
