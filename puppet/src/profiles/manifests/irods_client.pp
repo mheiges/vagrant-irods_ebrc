@@ -4,10 +4,10 @@ class profiles::irods_client {
 
   include epel
   include ebrc_yum_repo
-  include irods::client
+  include irods::icommands
 
   Class['epel'] ->
   Class['ebrc_yum_repo'] ->
-  Class['irods::client']
+  Class['irods::icommands']
   
 }
