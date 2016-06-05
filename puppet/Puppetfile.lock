@@ -20,27 +20,31 @@ GIT
   ref: master
   sha: 2e75a0de6b7e4da022a1a4de7ee5306b5fcc0a4d
   specs:
-    ebrc_yum_repo (0.1.0)
+    ebrc-ebrc_yum_repo (0.1.0)
       puppetlabs-stdlib (>= 1.0.0)
 
 GIT
   remote: https://github.com/EuPathDB/puppet-irods.git
   ref: master
-  sha: 0977491b8ba53ce64e0b8d01d3ea9fc6d7a9e5a2
+  sha: fa9c98b94f891fc8afdedd0af5bd62e953c7924a
   specs:
-    irods (0.1.0)
+    ebrc-irods (0.1.0)
       puppetlabs-stdlib (>= 1.0.0)
 
 PATH
   remote: ./src/profiles
   specs:
-    profiles (0.0.1)
+    local-profiles (0.0.0)
+      crayfishx-firewalld (>= 0)
+      ebrc-ebrc_yum_repo (>= 0)
+      ebrc-irods (>= 0)
+      puppetlabs-postgresql (>= 0)
 
 DEPENDENCIES
   crayfishx-firewalld (>= 0)
-  ebrc_yum_repo (>= 0)
-  irods (>= 0)
-  profiles (>= 0)
+  ebrc-ebrc_yum_repo (>= 0)
+  ebrc-irods (>= 0)
+  local-profiles (>= 0)
   puppetlabs-postgresql (>= 0)
   puppetlabs-stdlib (>= 0)
   stahnma-epel (>= 0)
