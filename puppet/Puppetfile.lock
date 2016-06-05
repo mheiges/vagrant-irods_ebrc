@@ -16,7 +16,7 @@ FORGE
       puppetlabs-stdlib (>= 3.0.0)
 
 GIT
-  remote: https://github.com/EuPathDB/puppet-ebrc_yum_repo.git
+  remote: git@github.com:EuPathDB/puppet-ebrc_yum_repo.git
   ref: master
   sha: 2e75a0de6b7e4da022a1a4de7ee5306b5fcc0a4d
   specs:
@@ -24,9 +24,9 @@ GIT
       puppetlabs-stdlib (>= 1.0.0)
 
 GIT
-  remote: https://github.com/EuPathDB/puppet-irods.git
+  remote: git@github.com:EuPathDB/puppet-irods.git
   ref: master
-  sha: fa9c98b94f891fc8afdedd0af5bd62e953c7924a
+  sha: 33326aa7f07641e24d2aefd6fd2571d9a62e4d49
   specs:
     ebrc-irods (0.1.0)
       puppetlabs-stdlib (>= 1.0.0)

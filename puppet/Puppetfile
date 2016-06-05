@@ -6,10 +6,10 @@ mod 'puppetlabs/postgresql'
 mod 'crayfishx/firewalld'
 
 mod 'ebrc/ebrc_yum_repo',
-  :git => 'https://github.com/EuPathDB/puppet-ebrc_yum_repo.git'
+  :git => 'git@github.com:EuPathDB/puppet-ebrc_yum_repo.git'
 
 mod 'ebrc/irods',
-  :git => 'https://github.com/EuPathDB/puppet-irods.git'
+  :git => 'git@github.com:EuPathDB/puppet-irods.git'
 
 mod 'local/profiles',
   :path => './src/profiles'
