@@ -6,8 +6,11 @@ class profiles::irods_client {
   include ebrc_yum_repo
   include irods::icommands
 
+  include irods::iadmin
+
   Class['epel'] ->
   Class['ebrc_yum_repo'] ->
-  Class['irods::icommands']
-  
+  Class['irods::icommands'] ->
+  Class['irods::iadmin']
+
 }

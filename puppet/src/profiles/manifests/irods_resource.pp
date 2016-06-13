@@ -4,12 +4,14 @@ class profiles::irods_resource {
   include epel
   include ebrc_yum_repo
   include irods::resource
+  include irods::filesystem
   include firewalld
 
   Class['epel'] ->
   Class['ebrc_yum_repo'] ->
+  Class['irods::filesystem'] ->
   Class['irods::resource']
-  
+
   # Hack to fix Vagrant landrush DNS NATing clobbered by firewalld
   # reload. Without this the resource server setup will fail due to
   # failure to resolve the iCAT hostname.
