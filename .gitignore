@@ -4,3 +4,4 @@ scratch/*
 puppet/modules
 puppet/.tmp
 puppet/.librarian
+nolibrarian
