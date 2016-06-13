@@ -53,8 +53,10 @@ Vagrant.configure(2) do |config|
         '/etc/puppetlabs/code/',
         owner: 'root', group: 'root' 
 
-      vm_config.librarian_puppet.puppetfile_dir = 'puppet'
-      vm_config.librarian_puppet.destructive = false
+      if ! File.exist?(File.dirname(__FILE__) + '/nolibrarian')
+        vm_config.librarian_puppet.puppetfile_dir = 'puppet'
+        vm_config.librarian_puppet.destructive = false
+      end
 
       if ( Vagrant.has_plugin?('landrush') and vm_config.landrush.enabled)
         # The Puppet manifests includes a firewalld reload that clobbers
