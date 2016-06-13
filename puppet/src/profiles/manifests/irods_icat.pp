@@ -9,8 +9,8 @@ class profiles::irods_icat {
 
   Class['epel'] ->
   Class['ebrc_yum_repo'] ->
-  Class['irods::filesystem'] ->
-  Class['irods::icat']
+  Class['irods::icat'] ->
+  Class['irods::filesystem']
 
   firewalld_rich_rule { "Accept iRODS iCAT from all":
     ensure  => present,
