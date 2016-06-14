@@ -15,13 +15,13 @@ irods::icat::db_srv_host: localhost
 
 irods::iadmin:
   - { exec: mkresc, resc: data, type: roundrobin }
-  - { exec: mkresc, resc: data_7k_001, type: unixfilesystem, path: 'rs1.vm:/srv/irods/vault_7k_001' }
-  - { exec: mkresc, resc: data_7k_002, type: unixfilesystem, path: 'rs1.vm:/srv/irods/vault_7k_002' }
+  - { exec: mkresc, resc: data_7k_001, type: unixfilesystem, path: 'rs1.irodsvm:/srv/irods/vault_7k_001' }
+  - { exec: mkresc, resc: data_7k_002, type: unixfilesystem, path: 'rs1.irods.vm:/srv/irods/vault_7k_002' }
   - { exec: addchildtoresc, resc: data, chld: data_7k_001 }
   - { exec: addchildtoresc, resc: data, chld: data_7k_002 }
   - { exec: mkresc, resc: repl, type: replication }
-  - { exec: mkresc, resc: data_7k_003, type: unixfilesystem, path: 'rs1.vm:/srv/irods/vault_7k_003' }
-  - { exec: mkresc, resc: data_7k_004, type: unixfilesystem, path: 'ies.vm:/srv/irods/vault_7k_004' }
+  - { exec: mkresc, resc: data_7k_003, type: unixfilesystem, path: 'rs1.irods.vm:/srv/irods/vault_7k_003' }
+  - { exec: mkresc, resc: data_7k_004, type: unixfilesystem, path: 'ies.irods.vm:/srv/irods/vault_7k_004' }
   - { exec: addchildtoresc, resc: repl, chld: data_7k_003 }
   - { exec: addchildtoresc, resc: repl, chld: data_7k_004 }
 
