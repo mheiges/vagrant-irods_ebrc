@@ -26,3 +26,12 @@ irods::iadmin:
   - { exec: addchildtoresc, resc: repl, chld: data_7k_004 }
 
 postgresql::server::postgres_password: PASSweird
+
+users_irods:
+    irods:
+        ensure: present
+        uid: 400
+        gid: 400
+        managehome: false
+        home: /var/lib/irods
+        shell: /bin/bash
