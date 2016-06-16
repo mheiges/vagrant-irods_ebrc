@@ -6,22 +6,11 @@ class profiles::irods_icat {
   include profiles::irods_resource_base
   include irods::icat
   include irods::filesystem
-  include firewalld
 
   Class['epel'] ->
   Class['ebrc_yum_repo'] ->
   Class['profiles::irods_resource_base'] ->
   Class['irods::icat'] ->
   Class['irods::filesystem']
-
-  firewalld_rich_rule { "Accept iRODS iCAT from all":
-    ensure  => present,
-    zone    => 'public',
-    port    => {
-     'port'     => $irods::globals::srv_port,
-     'protocol' => 'tcp',
-    },
-    action  => 'accept',
-  }
 
 }
