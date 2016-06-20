@@ -10,6 +10,7 @@ irods::globals::srv_zone_key: e83ac54fe6d5d66f24d16644ce72d9ae
 
 irods::icat::db_vendor: postgres
 irods::icat::db_name: ICAT
+irods::icat::db_user: irods
 irods::icat::db_password: passWORD
 irods::icat::db_srv_host: localhost
 
