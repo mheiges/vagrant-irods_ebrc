@@ -1,14 +1,14 @@
 # iRODS iCAT server
 class profiles::irods_icat_postgres {
 
-  include profiles::irods_icat
-  include postgresql::server
+  include ::profiles::irods_icat
+  include ::postgresql::server
   Class['postgresql::server'] ->
   Postgresql::Server::Db[$irods::icat::db_name] ->
-  Class['profiles::irods_icat']  
+  Class['profiles::irods_icat']
 
   if $irods::icat::do_setup == true {
-    include irods::icat::setup
+    include ::irods::icat::setup
     Postgresql::Server::Db[$irods::icat::db_name] ~>
     Class['irods::icat::setup']
   }

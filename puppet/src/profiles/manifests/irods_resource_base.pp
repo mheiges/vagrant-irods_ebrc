@@ -17,8 +17,8 @@
 
 class profiles::irods_resource_base {
 
-  include firewalld
-  include irods::globals
+  include ::firewalld
+  include ::irods::globals
 
   $srv_acct = $irods::globals::srv_acct
   $srv_grp  = $irods::globals::srv_grp
@@ -38,15 +38,27 @@ class profiles::irods_resource_base {
   file { '/srv/irods':
     ensure => 'directory',
     owner  => $srv_grp,
-    group  => $gid
+    group  => $gid,
   }
 
-  firewalld_rich_rule { "Accept iRODS from all":
+  firewalld_rich_rule { 'iRODS server':
     ensure    => present,
     zone      => 'public',
     port      => {
-     'port'     => $irods::globals::srv_port,
-     'protocol' => 'tcp',
+      'port'     => $irods::globals::srv_port,
+      'protocol' => 'tcp',
+    },
+    action    => 'accept',
+    subscribe => Exec['save_landrush_iptables'],
+    notify    => Exec['restore_landrush_iptables'],
+  }
+
+  firewalld_rich_rule { 'iRODS ctrl_plane_port':
+    ensure    => present,
+    zone      => 'public',
+    port      => {
+      'port'     => $irods::globals::ctrl_plane_port,
+      'protocol' => 'tcp',
     },
     action    => 'accept',
     subscribe => Exec['save_landrush_iptables'],

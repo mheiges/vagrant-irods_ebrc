@@ -2,11 +2,11 @@
 # think it will be part of the 4.2 release)
 class profiles::irods_client {
 
-  include epel
-  include ebrc_yum_repo
-  include irods::icommands
+  include ::epel
+  include ::ebrc_yum_repo
+  include ::irods::icommands
 
-  include irods::iadmin
+  include ::irods::iadmin
 
   Class['epel'] ->
   Class['ebrc_yum_repo'] ->
