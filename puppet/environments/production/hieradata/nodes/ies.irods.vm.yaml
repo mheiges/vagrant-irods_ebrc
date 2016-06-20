@@ -1,3 +1,0 @@
-irods::filesystem::paths:
-  - /srv/irods
-  - /srv/irods/vault_7k_004
