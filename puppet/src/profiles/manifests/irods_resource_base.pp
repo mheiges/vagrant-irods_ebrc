@@ -12,17 +12,18 @@
 #               home: /var/lib/irods
 #               shell: /bin/bash
 #
-# where the 'irods' username matches the value set for
+# where the 'irods' username in this example matches the value set for
 # $irods::globals::srv_acct
 
 class profiles::irods_resource_base {
 
   include firewalld
   include irods::globals
-  users { 'irods': }
 
   $srv_acct = $irods::globals::srv_acct
   $srv_grp  = $irods::globals::srv_grp
+
+  users { $srv_acct: }
 
   $users_irods = hiera('users_irods')
   $gid = $users_irods[$srv_acct]['gid']
@@ -34,12 +35,10 @@ class profiles::irods_resource_base {
 
   realize Group[$srv_grp]
 
-  # Hack to fix Vagrant landrush DNS NATing clobbered by firewalld
-  # reload. Without this the resource server setup will fail due to
-  # failure to resolve the iCAT hostname.
-  exec { 'save_landrush_iptables':
-    command     => '/sbin/iptables-save -t nat > /root/landrush.iptables',
-    refreshonly => true,
+  file { '/srv/irods':
+    ensure => 'directory',
+    owner  => $srv_grp,
+    group  => $gid
   }
 
   firewalld_rich_rule { "Accept iRODS from all":
@@ -54,6 +53,13 @@ class profiles::irods_resource_base {
     notify    => Exec['restore_landrush_iptables'],
   }
 
+  # Hack to fix Vagrant landrush DNS NATing clobbered by firewalld
+  # reload. Without this the resource server setup will fail due to
+  # failure to resolve the iCAT hostname.
+  exec { 'save_landrush_iptables':
+    command     => '/sbin/iptables-save -t nat > /root/landrush.iptables',
+    refreshonly => true,
+  }
   exec { 'restore_landrush_iptables':
     command     => '/sbin/iptables-restore < /root/landrush.iptables',
     refreshonly => true,
