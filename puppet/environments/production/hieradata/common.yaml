@@ -1,5 +1,7 @@
 ---
 
+ebrc_ca::cacert: apidb-ca-rsa.crt
+
 irods::globals::icat_server: ies.irods.vm
 irods::globals::icat_server_zone: ebrc
 irods::globals::icat_admin_user: rods
