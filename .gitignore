@@ -2,6 +2,8 @@
 scratch/*
 .vagrant
 puppet/modules
+puppet/**/hieradata/sensitive.yaml
 puppet/.tmp
 puppet/.librarian
 nolibrarian
+puppet/hiera.yaml.rpmsave

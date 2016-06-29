@@ -28,6 +28,13 @@ irods::iadmin:
   - { exec: addchildtoresc, resc: repl, chld: data_7k_003 }
   - { exec: addchildtoresc, resc: repl, chld: data_7k_004 }
 
+
+# nslcd::ldap_uris: see sensitive.yaml
+# nslcd::ldap_ssl: see sensitive.yaml
+# nslcd::ldap_filters: see sensitive.yaml
+# nslcd::ldap_binddn:  see sensitive.yaml
+# nslcd::ldap_bindpw:  see sensitive.yaml
+
 postgresql::server::postgres_password: PASSweird
 
 users_irods:

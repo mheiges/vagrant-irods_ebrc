@@ -6,6 +6,7 @@ mod 'puppetlabs/postgresql'
 mod 'crayfishx/firewalld'
 mod 'mthibaut/users'
 mod 'jlambert121/trusted_ca'
+mod 'OpenConceptConsulting/nslcd'
 
 mod 'ebrc/ebrc_yum_repo',
   :git => 'git@github.com:EuPathDB/puppet-ebrc_yum_repo.git'

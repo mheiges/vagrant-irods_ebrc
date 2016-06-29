@@ -12,6 +12,7 @@ class profiles::base {
       'ack',
       'nmap',
       'mlocate',
+      'jq',
     ]:
     ensure => installed,
   }

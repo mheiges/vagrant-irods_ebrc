@@ -8,5 +8,5 @@
 :hierarchy:
     - "nodes/%{::fqdn}"
     - "%{::domain}"
+    - sensitive
     - common
-

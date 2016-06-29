@@ -51,7 +51,10 @@ Vagrant.configure(2) do |config|
 
       vm_config.vm.synced_folder 'puppet/',
         '/etc/puppetlabs/code/',
-        owner: 'root', group: 'root' 
+        owner: 'root', group: 'root'
+
+      vm_config.ssh.pty = true
+      vm_config.vm.provision :shell, inline: 'sudo /usr/bin/yum update -y puppet'
 
       if ! File.exist?(File.dirname(__FILE__) + '/nolibrarian')
         vm_config.librarian_puppet.puppetfile_dir = 'puppet'

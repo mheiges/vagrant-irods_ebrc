@@ -1,0 +1,5 @@
+---
+
+irods::globals::use_ssl: true
+irods::globals::ssl_certificate_chain_file_source: "puppet:///modules/profiles/ssl/%{facts.hostname}-rsa.crt"
+irods::globals::ssl_certificate_key_file_source: "puppet:///modules/profiles/ssl/%{facts.hostname}-rsa.key"
