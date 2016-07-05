@@ -26,7 +26,7 @@ class profiles::irods_resource_base {
   users { $srv_acct: }
 
   $users_irods = hiera('users_irods')
-  $gid = $users_irods[$srv_acct]['gid']
+  $gid         = $users_irods[$srv_acct]['gid']
 
   @group { $srv_grp:
     ensure => present,
@@ -49,8 +49,6 @@ class profiles::irods_resource_base {
       'protocol' => 'tcp',
     },
     action    => 'accept',
-    subscribe => Exec['save_landrush_iptables'],
-    notify    => Exec['restore_landrush_iptables'],
   }
 
   firewalld_rich_rule { 'iRODS ctrl_plane_port':
@@ -61,13 +59,15 @@ class profiles::irods_resource_base {
       'protocol' => 'tcp',
     },
     action    => 'accept',
-    subscribe => Exec['save_landrush_iptables'],
-    notify    => Exec['restore_landrush_iptables'],
   }
 
   # Hack to fix Vagrant landrush DNS NATing clobbered by firewalld
   # reload. Without this the resource server setup will fail due to
   # failure to resolve the iCAT hostname.
+  Firewalld_rich_rule {
+    subscribe => Exec['save_landrush_iptables'],
+    notify    => Exec['restore_landrush_iptables'],
+  }
   exec { 'save_landrush_iptables':
     command     => '/sbin/iptables-save -t nat > /root/landrush.iptables',
     refreshonly => true,
