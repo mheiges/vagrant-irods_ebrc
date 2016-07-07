@@ -13,6 +13,7 @@ class profiles::base {
       'nmap',
       'mlocate',
       'jq',
+      'moreutils',
     ]:
     ensure => installed,
   }
