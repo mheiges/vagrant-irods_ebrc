@@ -8,6 +8,13 @@ class profiles::irods_icat {
 
   Class['profiles::base'] ->
   Class['profiles::irods_resource_base'] ->
-  Class['irods::icat']
+  Class['irods::icat'] ->
+  file { '/etc/irods/ebrc.re':
+    ensure => 'file',
+    source => "puppet:///modules/profiles/ebrc.re",
+    owner => $::irods::globals::srv_acct,
+    group => $::irods::globals::srv_grp,
+    mode  => '0600',
+  }
 
 }
