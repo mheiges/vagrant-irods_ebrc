@@ -70,7 +70,6 @@ Vagrant.configure(2) do |config|
       vm_config.vm.provision :puppet do |puppet|
         puppet.environment = 'production'
         puppet.environment_path = 'puppet/environments'
-        #puppet.options = ['--fileserverconfig=/vagrant/fileserver.conf']
         puppet.manifests_path = 'puppet/environments/production/manifests'
         puppet.manifest_file = cfg[:puppet_manifest]
         puppet.hiera_config_path = 'puppet/hiera.yaml'
