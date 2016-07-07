@@ -49,6 +49,7 @@ class profiles::irods_resource_base {
       'protocol' => 'tcp',
     },
     action    => 'accept',
+    notify    => Exec['restore_landrush_iptables'],
   }
 
   firewalld_rich_rule { 'iRODS ctrl_plane_port':
@@ -59,6 +60,7 @@ class profiles::irods_resource_base {
       'protocol' => 'tcp',
     },
     action    => 'accept',
+    notify    => Exec['restore_landrush_iptables'],
   }
 
   # Hack to fix Vagrant landrush DNS NATing clobbered by firewalld
@@ -66,7 +68,6 @@ class profiles::irods_resource_base {
   # failure to resolve the iCAT hostname.
   Firewalld_rich_rule {
     subscribe => Exec['save_landrush_iptables'],
-    notify    => Exec['restore_landrush_iptables'],
   }
   exec { 'save_landrush_iptables':
     command     => '/sbin/iptables-save -t nat > /root/landrush.iptables',
