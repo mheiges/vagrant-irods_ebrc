@@ -7,12 +7,19 @@ mod 'crayfishx/firewalld'
 mod 'mthibaut/users'
 mod 'jlambert121/trusted_ca'
 mod 'OpenConceptConsulting/nslcd'
+mod 'puppetlabs/java_ks'
 
 mod 'ebrc/ebrc_yum_repo',
   :git => 'git@github.com:EuPathDB/puppet-ebrc_yum_repo.git'
 
 mod 'ebrc/irods',
   :git => 'git@github.com:EuPathDB/puppet-irods.git'
+
+mod 'ebrc/ebrc_java',
+  :git => 'git@github.com:EuPathDB/puppet-ebrc_java.git'
+
+mod 'ebrc/ebrc_maven',
+  :git => 'git@github.com:EuPathDB/puppet-ebrc_maven.git'
 
 mod 'local/profiles',
   :path => './src/profiles'
