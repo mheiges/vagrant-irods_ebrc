@@ -63,6 +63,18 @@ class profiles::irods_resource_base {
     notify    => Exec['restore_landrush_iptables'],
   }
 
+  ['udp','tcp'].each |$protocol| {
+    firewalld_rich_rule { "iRODS data channel, ${protocol}":
+      ensure    => present,
+      zone      => 'public',
+      port      => {
+        'port'     => "${irods::globals::srv_port_range_start}-${irods::globals::srv_port_range_end}",
+        'protocol' => $protocol,
+      },
+      action    => 'accept',
+    }
+  }
+
   # Hack to fix Vagrant landrush DNS NATing clobbered by firewalld
   # reload. Without this the resource server setup will fail due to
   # failure to resolve the iCAT hostname.
