@@ -42,6 +42,8 @@ irods::iadmin:
   - { exec: addchildtoresc, resc: repl, chld: data_7k_003 }
   - { exec: addchildtoresc, resc: repl, chld: data_7k_004 }
   - { exec: mkuser, user: mheiges, type: rodsuser }
+  - { exec: ichmod, action: own, user: wrkspuser, collOrDataObj: /ebrc/workspaces }
+  - { exec: ichmod, action: inherit, collOrDataObj: /ebrc/workspaces }
 
 # nslcd::ldap_uris: see sensitive.yaml
 # nslcd::ldap_ssl: see sensitive.yaml
