@@ -41,7 +41,7 @@ irods::icommands:
   - { exec: mkresc, resc: data_7k_004, type: unixfilesystem, path: 'ies.irods.vm:/srv/irods/vault_7k_004' }
   - { exec: addchildtoresc, resc: repl, chld: data_7k_003 }
   - { exec: addchildtoresc, resc: repl, chld: data_7k_004 }
-  - { exec: mkuser, user: mheiges, type: rodsuser }
+  - { exec: mkuser, user: wrkspuser, type: rodsuser, password: passWORD }
   - { exec: imkdir, collection: /ebrc/workspaces }
   - { exec: ichmod, action: own, user: wrkspuser, collOrDataObj: /ebrc/workspaces }
   - { exec: ichmod, action: inherit, collOrDataObj: /ebrc/workspaces }
