@@ -28,7 +28,7 @@ irods::icat::db_password: passWORD
 irods::icat::db_srv_host: localhost
 irods::icat::re_rulebase_set: ['ebrc', 'core']
 
-irods::iadmin:
+irods::icommands:
   - { exec: mkresc, resc: ebrcResc, type: passthru }
   - { exec: mkresc, resc: rr1Resc, type: roundrobin }
   - { exec: mkresc, resc: data_7k_001, type: unixfilesystem, path: 'rs1.irods.vm:/srv/irods/vault_7k_001' }

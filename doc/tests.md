@@ -1,7 +1,7 @@
 
 ## Create resources
 
-There some resources defined in hiera (see `irods::iadmin` execs) that
+There some resources defined in hiera (see `irods::icommands` execs) that
 are created as part of the provisioning of the client node
 (`vagrant up client`). Confirm that is the case.
 

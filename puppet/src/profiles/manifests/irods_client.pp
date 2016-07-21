@@ -3,11 +3,11 @@
 class profiles::irods_client {
 
   include ::profiles::base
+  include ::irods::client
   include ::irods::icommands
-  include ::irods::iadmin
 
   Class['profiles::base'] ->
-  Class['irods::icommands'] ->
-  Class['irods::iadmin']
+  Class['irods::client'] ->
+  Class['irods::icommands']
 
 }
