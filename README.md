@@ -149,7 +149,9 @@ This Vagrant project is targeted for development of Puppet manifests and
 advanced tinkering with iRODS feature. For a lot of application
 development one only needs the `ies` box to provide the data
 ingress/egress over the default resource. To support that, the `ies` box
-alone can be packaged for distribution.
+alone can be packaged for distribution. See
+https://github.com/EuPathDB/vagrant-irods_ebrc_prod_model.git for
+example Vagrant project.
 
     cd vagrant-irods_ebrc
 
