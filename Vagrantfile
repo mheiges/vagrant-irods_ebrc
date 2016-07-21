@@ -7,19 +7,19 @@ IRODS_HOSTS = {
     :vagrant_box     => BOX,
     :vagrant_box_url => BOX_URL,
     :wf_hostname     => 'ies.irods.vm',
-    :puppet_manifest => 'ies.pp'
+    :puppet_manifest => 'site.pp'
   },
   :rs1 => { # Resource Server
     :vagrant_box     => BOX,
     :vagrant_box_url => BOX_URL,
     :wf_hostname     => 'rs1.irods.vm',
-    :puppet_manifest => 'rs.pp'
+    :puppet_manifest => 'site.pp'
   },
   :client => { # server with iCommands only
     :vagrant_box     => BOX,
     :vagrant_box_url => BOX_URL,
     :wf_hostname     => 'client.irods.vm',
-    :puppet_manifest => 'client.pp'
+    :puppet_manifest => 'site.pp'
   },
 }
 

@@ -72,18 +72,35 @@ Using either Git or Subversion,
 
     git clone https://github.com/mheiges/vagrant-irods_ebrc.git
 
-Start the Virtual Machine
+Start the Virtual Machines
 -------------------------
+
+There are three virtual machines defined
+
+- `ies`: iCAT enabled resource server with iCommands. This VM alone is sufficient 
+for working with the default `ebrcResc` resource.
+- `rs1`: a resource server with iCommands.
+- `client`: a server with only iCommands installed.
 
     cd vagrant-irods_ebrc
     vagrant up
 
-ssh to the Virtual Machine
+Or start them individually, but be aware that `rs1` depends on the
+availability of the iCAT on `ies`.
+
+    vagrant up ies
+    vagrant up rs1
+    vagrant up client
+
+ssh to the Virtual Machines
 -----------------
 
-To connect to the VM as the `vagrant` user, run
+To connect to the individual VMs as the `vagrant` user, run one of the
+following.
 
-    vagrant ssh
+    vagrant ssh ies
+    vagrant ssh rs1
+    vagrant ssh client
 
 Limitations
 =======
@@ -123,9 +140,4 @@ this document).
 Manual iRODS Installation
 =======
 
-sudo /opt/puppetlabs/bin/puppet apply --environment=production /etc/puppetlabs/code/environments/production/manifests/ies.pp
-
-sudo /opt/puppetlabs/bin/puppet apply --environment=production /etc/puppetlabs/code/environments/production/manifests/rs.pp
-
-sudo /opt/puppetlabs/bin/puppet apply --environment=production /etc/puppetlabs/code/environments/production/manifests/client.pp
-
+    sudo /opt/puppetlabs/bin/puppet apply --environment=production /etc/puppetlabs/code/environments/production/manifests/site.pp 

@@ -1,0 +1,3 @@
+---
+roles:
+  - profiles::irods_client

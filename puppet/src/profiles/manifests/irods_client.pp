@@ -4,10 +4,8 @@ class profiles::irods_client {
 
   include ::profiles::base
   include ::irods::client
-  include ::irods::icommands
 
   Class['profiles::base'] ->
-  Class['irods::client'] ->
-  Class['irods::icommands']
+  Class['irods::client']
 
 }
