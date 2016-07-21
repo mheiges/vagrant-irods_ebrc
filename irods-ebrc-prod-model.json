@@ -1,0 +1,28 @@
+{
+  "description": "EBRC iRODS Dev Box",
+  "name": "ebrc/irods-ebrc-prod-model",
+  "versions": [
+    {
+      "providers": [
+        {
+          "checksum": "23ba41fb785ad8f13fa832eed78e14393e57d87bff834838c67cb4ad20933fbe",
+          "checksum_type": "sha256",
+          "name": "virtualbox",
+          "url": "http://software.apidb.org/vagrant/irods-ebrc-prod-model/1.0.0/irods-ebrc-prod-model.box"
+        }
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "providers": [
+        {
+          "checksum": "838a13af5eaa79cd1a0be7b5a26b254765537238fcdd7c49f6e36c48f1e07ed7",
+          "checksum_type": "sha256",
+          "name": "virtualbox",
+          "url": "http://software.apidb.org/vagrant/irods-ebrc-prod-model/1.0.1/irods-ebrc-prod-model.box"
+        }
+      ],
+      "version": "1.0.1"
+    }
+  ]
+}

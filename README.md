@@ -77,7 +77,7 @@ Start the Virtual Machines
 
 There are three virtual machines defined
 
-- `ies`: iCAT enabled resource server with iCommands. This VM alone is sufficient 
+- `ies`: iCAT enabled resource server with iCommands. This VM alone is sufficient
 for working with the default `ebrcResc` resource.
 - `rs1`: a resource server with iCommands.
 - `client`: a server with only iCommands installed.
@@ -140,4 +140,57 @@ this document).
 Manual iRODS Installation
 =======
 
-    sudo /opt/puppetlabs/bin/puppet apply --environment=production /etc/puppetlabs/code/environments/production/manifests/site.pp 
+    sudo /opt/puppetlabs/bin/puppet apply --environment=production /etc/puppetlabs/code/environments/production/manifests/site.pp
+
+Packaging `ies` node for application development
+=======
+
+This Vagrant project is targeted for development of Puppet manifests and
+advanced tinkering with iRODS feature. For a lot of application
+development one only needs the `ies` box to provide the data
+ingress/egress over the default resource. To support that, the `ies` box
+alone can be packaged for distribution.
+
+    cd vagrant-irods_ebrc
+
+    rm irods-ebrc-prod-model.box
+
+    vagrant package --base $(cat .vagrant/machines/ies/virtualbox/id) --output irods-ebrc-prod-model.box
+
+    SHA2=(`shasum -a 256 irods-ebrc-prod-model.box`)
+
+Lookup the current version in the json file.
+
+    jq '.versions[-1].version' irods-ebrc-prod-model.json
+    "1.0.0"
+
+Pick a desired incremented value and update the json file.
+
+    VER=1.0.1
+
+Append an entry for this new version in the `webdev.json` file.
+
+    jq --arg ver $VER --arg sha2 $SHA2 '.versions += ( [{
+      "providers": [
+        {
+          "checksum": $sha2,
+          "checksum_type": "sha256",
+          "name": "virtualbox",
+          "url": "http://software.apidb.org/vagrant/irods-ebrc-prod-model/\($ver)/irods-ebrc-prod-model.box"
+        }
+      ],
+      "version": $ver
+    }
+    ] )' irods-ebrc-prod-model.json | sponge irods-ebrc-prod-model.json
+
+Create a directory on the webserver
+
+    ssh luffa.gacrc.uga.edu "mkdir /var/www/software.apidb.org/vagrant/irods-ebrc-prod-model/${VER}"
+
+Uploade the box, to versioned directory, and json file, to web root directory.
+
+    rsync -aPv irods-ebrc-prod-model.json luffa.gacrc.uga.edu:/var/www/software.apidb.org/vagrant/
+
+    rsync -aPv irods-ebrc-prod-model.box \
+        luffa.gacrc.uga.edu:/var/www/software.apidb.org/vagrant/irods-ebrc-prod-model/${VER}
+

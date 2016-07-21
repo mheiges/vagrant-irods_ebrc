@@ -1,5 +1,6 @@
 .DS_Store
 scratch/*
+*.box
 .vagrant
 puppet/modules
 puppet/**/hieradata/sensitive.yaml
