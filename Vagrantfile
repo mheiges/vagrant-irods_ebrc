@@ -53,6 +53,7 @@ Vagrant.configure(2) do |config|
         '/etc/puppetlabs/code/',
         owner: 'root', group: 'root'
 
+      vm_config.ssh.forward_agent = true
       vm_config.ssh.pty = true
       vm_config.vm.provision :shell, inline: 'sudo /usr/bin/yum update -y puppet'
 
