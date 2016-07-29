@@ -42,14 +42,19 @@ irods::icommands:
   - { exec: addchildtoresc, resc: repl, chld: data_7k_003 }
   - { exec: addchildtoresc, resc: repl, chld: data_7k_004 }
   - { exec: mkuser, user: wrkspuser, type: rodsuser, password: passWORD }
+  - { exec: mkuser, user: mheiges,   type: rodsuser, password: passWORD }
   - { exec: mkgroup, group: wrkspGroup }
   - { exec: mkgroup, group: staffGroup }
   - { exec: atg, group: wrkspGroup, user: wrkspuser }
+  - { exec: atg, group: staffGroup, user: mheiges }
   - { exec: imkdir, collection: /ebrc/workspaces }
   - { exec: ichmod, action: inherit,                   collOrDataObj: /ebrc/workspaces }
   - { exec: ichmod, action: own,     user: wrkspuser,  collOrDataObj: /ebrc/workspaces }
   - { exec: ichmod, action: read,    user: staffGroup, collOrDataObj: /ebrc/workspaces }
   - { exec: ichmod, action: read,    user: staffGroup, collOrDataObj: /ebrc }
+  - { exec: imkdir, collection: /ebrc/data }
+  - { exec: ichmod, action: inherit,                   collOrDataObj: /ebrc/data }
+  - { exec: ichmod, action: own,     user: staffGroup, collOrDataObj: /ebrc/data }
 
 
 # nslcd::ldap_uris: see sensitive.yaml
