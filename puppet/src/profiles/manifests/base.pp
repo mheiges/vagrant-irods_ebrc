@@ -13,10 +13,11 @@ class profiles::base {
 
   package { [
       'ack',
-      'nmap',
-      'mlocate',
+      'gcc-c++',
       'jq',
+      'mlocate',
       'moreutils',
+      'nmap',
     ]:
     ensure => installed,
   }
