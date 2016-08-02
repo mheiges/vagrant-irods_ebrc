@@ -18,6 +18,7 @@ class profiles::base {
       'mlocate',
       'moreutils',
       'nmap',
+      'ntp',
     ]:
     ensure => installed,
   }
