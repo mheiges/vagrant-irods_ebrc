@@ -54,9 +54,9 @@ class profiles::irods_resource_base {
     owner  => 'root',
     group  => 'root',
     mode   => '0755',
-    before => File['/var/www/Common/apiSiteFiles'],
+    before => File['/var/www/Common/apiSiteFilesMirror'],
   }
-  file { '/var/www/Common/apiSiteFiles':
+  file { '/var/www/Common/apiSiteFilesMirror':
     ensure => 'directory',
     owner  => $srv_grp,
     group  => $gid,

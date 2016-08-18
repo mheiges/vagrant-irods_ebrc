@@ -56,8 +56,8 @@ irods::icommands:
   - { exec: ichmod, action: inherit,                   collOrDataObj: /ebrc/data }
   - { exec: ichmod, action: own,     user: staffGroup, collOrDataObj: /ebrc/data }
   - { exec: mkresc, resc: asfReplResc, type: replication }
-  - { exec: mkresc, resc: asfRescS, type: shareuf, path: 'rs1.irods.vm:/var/www/Common/apiSiteFiles' }
-  - { exec: mkresc, resc: asfRescN, type: shareuf, path: 'ies.irods.vm:/srv/irods/apiSiteFiles' }
+  - { exec: mkresc, resc: asfRescS, type: shareuf, path: 'rs1.irods.vm:/var/www/Common/apiSiteFilesMirror' }
+  - { exec: mkresc, resc: asfRescN, type: shareuf, path: 'ies.irods.vm:/srv/irods/apiSiteFilesMirror' }
   - { exec: addchildtoresc, resc: asfReplResc, chld: asfRescS }
   - { exec: addchildtoresc, resc: asfReplResc, chld: asfRescN }
 
