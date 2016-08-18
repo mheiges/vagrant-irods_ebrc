@@ -12,10 +12,10 @@ class profiles::irods_icat {
   Class['irods::icat'] ->
   file { '/etc/irods/ebrc.re':
     ensure => 'file',
-    source => "puppet:///modules/profiles/irods/ebrc.re",
-    owner => $::irods::globals::srv_acct,
-    group => $::irods::globals::srv_grp,
-    mode  => '0600',
+    source => 'puppet:///modules/profiles/irods/ebrc.re',
+    owner  => $::irods::globals::srv_acct,
+    group  => $::irods::globals::srv_grp,
+    mode   => '0600',
   } ->
   Class['profiles::irods_icommands']
 

@@ -64,36 +64,36 @@ class profiles::irods_resource_base {
   }
 
   firewalld_rich_rule { 'iRODS server':
-    ensure    => present,
-    zone      => 'public',
-    port      => {
+    ensure => present,
+    zone   => 'public',
+    port   => {
       'port'     => $irods::globals::srv_port,
       'protocol' => 'tcp',
     },
-    action    => 'accept',
-    notify    => Exec['restore_landrush_iptables'],
+    action => 'accept',
+    notify => Exec['restore_landrush_iptables'],
   }
 
   firewalld_rich_rule { 'iRODS ctrl_plane_port':
-    ensure    => present,
-    zone      => 'public',
-    port      => {
+    ensure => present,
+    zone   => 'public',
+    port   => {
       'port'     => $irods::globals::ctrl_plane_port,
       'protocol' => 'tcp',
     },
-    action    => 'accept',
-    notify    => Exec['restore_landrush_iptables'],
+    action => 'accept',
+    notify => Exec['restore_landrush_iptables'],
   }
 
   ['udp','tcp'].each |$protocol| {
     firewalld_rich_rule { "iRODS data channel, ${protocol}":
-      ensure    => present,
-      zone      => 'public',
-      port      => {
+      ensure => present,
+      zone   => 'public',
+      port   => {
         'port'     => "${irods::globals::srv_port_range_start}-${irods::globals::srv_port_range_end}",
         'protocol' => $protocol,
       },
-      action    => 'accept',
+      action => 'accept',
     }
   }
 

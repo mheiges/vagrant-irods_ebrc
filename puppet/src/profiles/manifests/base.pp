@@ -1,3 +1,4 @@
+# general requirements for the node.
 class profiles::base {
 
   include ::profiles::ebrc_ca_bundle
