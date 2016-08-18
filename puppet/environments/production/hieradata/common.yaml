@@ -55,6 +55,11 @@ irods::icommands:
   - { exec: imkdir, collection: /ebrc/data }
   - { exec: ichmod, action: inherit,                   collOrDataObj: /ebrc/data }
   - { exec: ichmod, action: own,     user: staffGroup, collOrDataObj: /ebrc/data }
+  - { exec: mkresc, resc: asfReplResc, type: replication }
+  - { exec: mkresc, resc: asfRescS, type: shareuf, path: 'rs1.irods.vm:/var/www/Common/apiSiteFiles' }
+  - { exec: mkresc, resc: asfRescN, type: shareuf, path: 'ies.irods.vm:/srv/irods/apiSiteFiles' }
+  - { exec: addchildtoresc, resc: asfReplResc, chld: asfRescS }
+  - { exec: addchildtoresc, resc: asfReplResc, chld: asfRescN }
 
 
 # nslcd::ldap_uris: see sensitive.yaml
