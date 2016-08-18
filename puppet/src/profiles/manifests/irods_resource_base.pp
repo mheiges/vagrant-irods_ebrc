@@ -20,6 +20,10 @@ class profiles::irods_resource_base {
   include ::firewalld
   include ::irods::globals
 
+  package { 'irods-libshareuf':
+    ensure => 'latest',
+  }
+
   $srv_acct = $irods::globals::srv_acct
   $srv_grp  = $irods::globals::srv_grp
 
@@ -39,6 +43,24 @@ class profiles::irods_resource_base {
     ensure => 'directory',
     owner  => $srv_grp,
     group  => $gid,
+  }
+
+  # simulate apiSiteFiles for webserver environment
+  file { [
+    '/var/www',
+    '/var/www/Common',
+    ]:
+    ensure => 'directory',
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0755',
+    before => File['/var/www/Common/apiSiteFiles'],
+  }
+  file { '/var/www/Common/apiSiteFiles':
+    ensure => 'directory',
+    owner  => $srv_grp,
+    group  => $gid,
+    mode   => '0755',
   }
 
   firewalld_rich_rule { 'iRODS server':
