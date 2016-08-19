@@ -19,4 +19,9 @@ class profiles::irods_icat {
   } ->
   Class['profiles::irods_icommands']
 
+  package { 'irods-libshareuf':
+    ensure  => 'latest',
+    require => Class['::irods::icat'],
+  }
+
 }

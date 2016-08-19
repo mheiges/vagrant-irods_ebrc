@@ -20,10 +20,6 @@ class profiles::irods_resource_base {
   include ::firewalld
   include ::irods::globals
 
-  package { 'irods-libshareuf':
-    ensure => 'latest',
-  }
-
   $srv_acct = $irods::globals::srv_acct
   $srv_grp  = $irods::globals::srv_grp
 
