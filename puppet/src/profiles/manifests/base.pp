@@ -14,12 +14,15 @@ class profiles::base {
 
   package { [
       'ack',
+      'bind-utils',
       'gcc-c++',
       'jq',
       'mlocate',
       'moreutils',
       'nmap',
       'ntp',
+      'rsync',
+      'strace',
     ]:
     ensure => installed,
   }
