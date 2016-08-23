@@ -10,7 +10,7 @@ class profiles::irods_resource {
   Class['irods::resource']
 
   package { 'irods-libshareuf':
-    ensure => 'latest',
+    ensure  => 'latest',
     require => Class['::irods::resource'],
   }
 
