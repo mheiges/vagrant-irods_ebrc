@@ -2,11 +2,11 @@
 irods::globals::install_dev_pkgs: false
 
 ebrc_ca::cacert: apidb-ca-rsa.crt
-ebrc_java::java_home: /usr/java/jdk1.8.0_92
+ebrc_java::java_home: /usr/java/jdk1.8.0_112
 ebrc_java::packages:
-  - jdk1.8.0_92
-ebrc_java::java_home: /usr/java/jdk1.8.0_92
-ebrc_java::default_ver: /usr/java/jdk1.8.0_92
+  - jdk1.8.0_112
+ebrc_java::java_home: /usr/java/jdk1.8.0_112
+ebrc_java::default_ver: /usr/java/jdk1.8.0_112
 ebrc_maven::packages:
   - maven-3.3.3
 ebrc_maven::maven_home: /usr/java/maven-3.3.3
