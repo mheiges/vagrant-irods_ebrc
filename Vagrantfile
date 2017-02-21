@@ -1,23 +1,19 @@
 BOX = 'ebrc/centos-7-64-puppet'
-BOX_URL = ''
 TLD = 'irods.vm'
 
 IRODS_HOSTS = {
   :ies => { # iCAT-enabled Server
     :vagrant_box     => BOX,
-    :vagrant_box_url => BOX_URL,
     :wf_hostname     => 'ies.irods.vm',
     :puppet_manifest => 'site.pp'
   },
   :rs1 => { # Resource Server
     :vagrant_box     => BOX,
-    :vagrant_box_url => BOX_URL,
     :wf_hostname     => 'rs1.irods.vm',
     :puppet_manifest => 'site.pp'
   },
   :client => { # server with iCommands only
     :vagrant_box     => BOX,
-    :vagrant_box_url => BOX_URL,
     :wf_hostname     => 'client.irods.vm',
     :puppet_manifest => 'site.pp'
   },
@@ -37,7 +33,7 @@ Vagrant.configure(2) do |config|
     config.vm.define name do |vm_config|
 
       vm_config.vm.provider 'virtualbox' do |v|
-        v.gui = false
+        v.memory = 2048
       end
 
       if Vagrant.has_plugin?('landrush')
@@ -46,7 +42,6 @@ Vagrant.configure(2) do |config|
       end
 
       vm_config.vm.box      = cfg[:vagrant_box]     if cfg[:vagrant_box]
-      vm_config.vm.box_url  = cfg[:vagrant_box_url] if cfg[:vagrant_box_url]
       vm_config.vm.hostname = cfg[:wf_hostname]     if cfg[:wf_hostname]
 
       vm_config.vm.synced_folder 'puppet/',
@@ -54,7 +49,7 @@ Vagrant.configure(2) do |config|
         owner: 'root', group: 'root'
 
       vm_config.ssh.forward_agent = true
-      vm_config.ssh.pty = true
+      #vm_config.ssh.pty = true
       vm_config.vm.provision :shell, inline: 'sudo /usr/bin/yum update -y puppet'
 
       if ! File.exist?(File.dirname(__FILE__) + '/nolibrarian')
