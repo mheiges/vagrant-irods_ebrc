@@ -2,7 +2,7 @@ forge 'https://forgeapi.puppetlabs.com'
 
 mod 'stahnma/epel'
 mod 'puppetlabs/stdlib'
-mod 'puppetlabs/postgresql'
+mod 'puppetlabs/postgresql', '4.8.0'
 mod 'crayfishx/firewalld'
 mod 'mthibaut/users'
 mod 'jlambert121/trusted_ca'
