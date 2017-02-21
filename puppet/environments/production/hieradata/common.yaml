@@ -1,5 +1,5 @@
 ---
-irods::globals::install_dev_pkgs: false
+irods::globals::install_dev_pkgs: true
 
 ebrc_ca::cacert: apidb-ca-rsa.crt
 ebrc_java::java_home: /usr/java/jdk1.8.0_112
@@ -37,11 +37,11 @@ irods::icommands:
   - { exec: addchildtoresc, resc: rr1Resc, chld: data_7k_001 }
   - { exec: addchildtoresc, resc: rr1Resc, chld: data_7k_002 }
   - { exec: addchildtoresc, resc: ebrcResc, chld: rr1Resc }
-  - { exec: mkresc, resc: repl, type: replication }
-  - { exec: mkresc, resc: data_7k_003, type: unixfilesystem, path: 'rs1.irods.vm:/srv/irods/vault_7k_003' }
-  - { exec: mkresc, resc: data_7k_004, type: unixfilesystem, path: 'ies.irods.vm:/srv/irods/vault_7k_004' }
-  - { exec: addchildtoresc, resc: repl, chld: data_7k_003 }
-  - { exec: addchildtoresc, resc: repl, chld: data_7k_004 }
+#   - { exec: mkresc, resc: repl, type: replication }
+#   - { exec: mkresc, resc: data_7k_003, type: unixfilesystem, path: 'rs1.irods.vm:/srv/irods/vault_7k_003' }
+#   - { exec: mkresc, resc: data_7k_004, type: unixfilesystem, path: 'ies.irods.vm:/srv/irods/vault_7k_004' }
+#   - { exec: addchildtoresc, resc: repl, chld: data_7k_003 }
+#   - { exec: addchildtoresc, resc: repl, chld: data_7k_004 }
   - { exec: mkuser, user: wrkspuser, type: rodsuser, password: passWORD }
   - { exec: mkuser, user: mheiges,   type: rodsuser, password: passWORD }
   - { exec: mkgroup, group: wrkspGroup }
@@ -56,11 +56,11 @@ irods::icommands:
   - { exec: imkdir, collection: /ebrc/data }
   - { exec: ichmod, action: inherit,                   collOrDataObj: /ebrc/data }
   - { exec: ichmod, action: own,     user: staffGroup, collOrDataObj: /ebrc/data }
-  - { exec: mkresc, resc: asfReplResc, type: replication }
-  - { exec: mkresc, resc: asfRescS, type: shareuf, path: 'rs1.irods.vm:/var/www/Common/apiSiteFilesMirror' }
-  - { exec: mkresc, resc: asfRescN, type: shareuf, path: 'ies.irods.vm:/srv/irods/apiSiteFilesMirror' }
-  - { exec: addchildtoresc, resc: asfReplResc, chld: asfRescS }
-  - { exec: addchildtoresc, resc: asfReplResc, chld: asfRescN }
+#   - { exec: mkresc, resc: asfReplResc, type: replication }
+#   - { exec: mkresc, resc: asfRescS, type: shareuf, path: 'rs1.irods.vm:/var/www/Common/apiSiteFilesMirror' }
+#   - { exec: mkresc, resc: asfRescN, type: shareuf, path: 'ies.irods.vm:/srv/irods/apiSiteFilesMirror' }
+#   - { exec: addchildtoresc, resc: asfReplResc, chld: asfRescS }
+#   - { exec: addchildtoresc, resc: asfReplResc, chld: asfRescN }
   - { exec: imkdir, collection: /ebrc/apiSiteFilesMirror }
   - { exec: ichmod, action: inherit, collOrDataObj: /ebrc/apiSiteFilesMirror }
   - { exec: ichmod, action: own, user: staffGroup, collOrDataObj: /ebrc/apiSiteFilesMirror }

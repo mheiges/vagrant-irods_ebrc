@@ -67,6 +67,7 @@ class profiles::irods_resource_base {
       'protocol' => 'tcp',
     },
     action => 'accept',
+    subscribe => Exec['save_landrush_iptables'],
     notify => Exec['restore_landrush_iptables'],
   }
 
@@ -78,6 +79,7 @@ class profiles::irods_resource_base {
       'protocol' => 'tcp',
     },
     action => 'accept',
+    subscribe => Exec['save_landrush_iptables'],
     notify => Exec['restore_landrush_iptables'],
   }
 
@@ -101,7 +103,6 @@ class profiles::irods_resource_base {
   }
   exec { 'save_landrush_iptables':
     command     => '/sbin/iptables-save -t nat > /root/landrush.iptables',
-    refreshonly => true,
   }
   exec { 'restore_landrush_iptables':
     command     => '/sbin/iptables-restore < /root/landrush.iptables',

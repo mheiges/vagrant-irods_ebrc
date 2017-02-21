@@ -9,7 +9,7 @@ class profiles::irods_resource {
   Class['profiles::irods_resource_base'] ->
   Class['irods::resource']
 
-  package { 'irods-libshareuf':
+  package { 'irods-resource-plugin-shareuf-4.2.0':
     ensure  => 'latest',
     require => Class['::irods::resource'],
   }

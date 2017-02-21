@@ -1,14 +1,18 @@
-# iRODS iCAT server
-class profiles::irods_icat {
+# Setup iRODS provider. 
+# Includes iCAT postgresql database.
 
-  include ::irods::icat
+class profiles::irods_provider {
+
   include ::profiles::base
   include ::profiles::irods_resource_base
+  include ::profiles::irods_postgres_icat
+  include ::irods::icat
   include ::profiles::irods_icommands
   include ::profiles::irods_pam
 
   Class['profiles::base'] ->
   Class['profiles::irods_resource_base'] ->
+  Class['profiles::irods_postgres_icat'] ->
   Class['irods::icat'] ->
   file { '/etc/irods/ebrc.re':
     ensure => 'file',
@@ -19,7 +23,7 @@ class profiles::irods_icat {
   } ->
   Class['profiles::irods_icommands']
 
-  package { 'irods-libshareuf':
+  package { 'irods-resource-plugin-shareuf-4.2.0':
     ensure  => 'latest',
     require => Class['::irods::icat'],
   }
