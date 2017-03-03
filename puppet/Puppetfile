@@ -13,7 +13,8 @@ mod 'ebrc/ebrc_yum_repo',
   :git => 'https://github.com/EuPathDB/puppet-ebrc_yum_repo.git'
 
 mod 'ebrc/irods',
-  :git => 'https://github.com/EuPathDB/puppet-irods.git'
+  :git => 'https://github.com/EuPathDB/puppet-irods.git',
+  :ref => 'irods4.1'
 
 mod 'ebrc/ebrc_java',
   :git => 'https://github.com/EuPathDB/puppet-ebrc_java.git'

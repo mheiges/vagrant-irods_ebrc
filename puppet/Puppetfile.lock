@@ -1,21 +1,40 @@
 FORGE
   remote: https://forgeapi.puppetlabs.com
   specs:
-    crayfishx-firewalld (2.2.0)
+    OpenConceptConsulting-nslcd (0.2.0)
+      puppetlabs-stdlib (>= 0)
+    crayfishx-firewalld (3.2.0)
       puppetlabs-stdlib (< 5.0.0, >= 4.2.0)
+    jlambert121-trusted_ca (1.1.0)
+      puppetlabs-stdlib (< 5.0.0, >= 3.2.0)
     mthibaut-users (1.0.11)
       puppetlabs-stdlib (>= 0)
-    puppetlabs-apt (2.2.2)
+    puppetlabs-apt (2.3.0)
       puppetlabs-stdlib (< 5.0.0, >= 4.5.0)
-    puppetlabs-concat (2.1.0)
-      puppetlabs-stdlib (< 5.0.0, >= 3.2.0)
-    puppetlabs-postgresql (4.7.1)
+    puppetlabs-concat (2.2.0)
+      puppetlabs-stdlib (< 5.0.0, >= 4.2.0)
+    puppetlabs-java_ks (1.4.1)
+    puppetlabs-postgresql (4.8.0)
       puppetlabs-apt (< 3.0.0, >= 1.8.0)
       puppetlabs-concat (< 3.0.0, >= 1.1.0)
       puppetlabs-stdlib (~> 4.0)
-    puppetlabs-stdlib (4.12.0)
+    puppetlabs-stdlib (4.15.0)
     stahnma-epel (1.2.2)
       puppetlabs-stdlib (>= 3.0.0)
+
+GIT
+  remote: https://github.com/EuPathDB/puppet-ebrc_java.git
+  ref: master
+  sha: 5434fa8c13d2dc4987530b5d9e713f05b9d93841
+  specs:
+    ebrc-ebrc_java (0.1.0)
+
+GIT
+  remote: https://github.com/EuPathDB/puppet-ebrc_maven.git
+  ref: master
+  sha: 1a1e054e55ec51a1d82babb4f5d320b6b9a517d5
+  specs:
+    ebrc-ebrc_maven (0.1.0)
 
 GIT
   remote: https://github.com/EuPathDB/puppet-ebrc_yum_repo.git
@@ -27,8 +46,8 @@ GIT
 
 GIT
   remote: https://github.com/EuPathDB/puppet-irods.git
-  ref: master
-  sha: 92cdfe3f234bf77bd4f32869f2e5a42118503b3c
+  ref: irods4.1
+  sha: 1080308dff67d8316aa4cfde7f37ffc8ff10a8fc
   specs:
     ebrc-irods (0.1.0)
       puppetlabs-stdlib (>= 1.0.0)
@@ -43,11 +62,16 @@ PATH
       puppetlabs-postgresql (>= 0)
 
 DEPENDENCIES
+  OpenConceptConsulting-nslcd (>= 0)
   crayfishx-firewalld (>= 0)
+  ebrc-ebrc_java (>= 0)
+  ebrc-ebrc_maven (>= 0)
   ebrc-ebrc_yum_repo (>= 0)
   ebrc-irods (>= 0)
+  jlambert121-trusted_ca (>= 0)
   local-profiles (>= 0)
   mthibaut-users (>= 0)
+  puppetlabs-java_ks (>= 0)
   puppetlabs-postgresql (>= 0)
   puppetlabs-stdlib (>= 0)
   stahnma-epel (>= 0)
