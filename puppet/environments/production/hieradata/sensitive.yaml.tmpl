@@ -1,0 +1,10 @@
+---
+# Site-specific secrets that should not be committed to SCM
+
+nslcd::ldap_uris: ['ldap://dsA.ldapexample.com', 'ldap://dsB.ldapexample.com']
+nslcd::ldap_ssl: 'start_tls'
+nslcd::ldap_search_base: ou=People,dc=ldapexample,dc=com
+nslcd::ldap_filters:
+  passwd: '(uid=*)'
+nslcd::ldap_binddn: uid=search,ou=Special Users,dc=ldapexample,dc=com
+nslcd::ldap_bindpw: s3cr34t

@@ -72,6 +72,21 @@ Using either Git or Subversion,
 
     git clone https://github.com/mheiges/vagrant-irods_ebrc.git
 
+Create hiera sensitive data file
+-------------------------
+
+When Vagrant first boots the virtual machine (`vagrant up`) it will
+provision iRODS software and dependencies. The provisioning is done with
+Puppet using parameter variables defined in
+`puppet/environments/production/hieradata/*.yaml`. Some of the parameter
+values are site-specific secrets that can not be committed to SCM so you
+will need to supply those values before running `vagrant up`.
+
+In the `puppet/environments/production/hieradata` directory, copy
+`sensitive.yaml.tmpl` to `sensitive.yaml` and set values specific for
+your site.
+
+
 Start the Virtual Machines
 -------------------------
 
