@@ -117,6 +117,17 @@ following.
     vagrant ssh rs1
     vagrant ssh client
 
+
+iRODS Puppet module development
+=======
+
+The Vagrantfile calls Puppet librarian to assemble the required modules
+in `puppet/modules` as one of the provisioning steps. Librarian deletes
+and repopulates `puppet/modules` with each provisioning, removing any
+development edits you might have made. To disable the Puppet librarian
+module management, create the file `nolibrarian` in the same directory
+as `Vagrantfile`.
+
 Limitations
 =======
 
