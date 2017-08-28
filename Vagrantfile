@@ -1,19 +1,23 @@
 BOX = 'ebrc/centos-7-64-puppet'
+BOX_URL = 'http://software.apidb.org/vagrant/centos-7-64-puppet.json'
 TLD = 'irods.vm'
 
 IRODS_HOSTS = {
   :ies => { # iCAT-enabled Server
     :vagrant_box     => BOX,
+    :vagrant_box_url => BOX_URL,
     :wf_hostname     => 'ies.irods.vm',
     :puppet_manifest => 'site.pp'
   },
   :rs1 => { # Resource Server
     :vagrant_box     => BOX,
+    :vagrant_box_url => BOX_URL,
     :wf_hostname     => 'rs1.irods.vm',
     :puppet_manifest => 'site.pp'
   },
   :client => { # server with iCommands only
     :vagrant_box     => BOX,
+    :vagrant_box_url => BOX_URL,
     :wf_hostname     => 'client.irods.vm',
     :puppet_manifest => 'site.pp'
   },
